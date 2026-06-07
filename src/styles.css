@@ -1,0 +1,118 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-primary-fixed-dim: var(--primary-fixed-dim);
+  --color-primary-container: var(--primary-container);
+  --color-secondary-fixed: var(--secondary-fixed);
+  --color-secondary-container: var(--secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-fixed-dim: var(--tertiary-fixed-dim);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline-variant: var(--outline-variant);
+  --color-error: var(--error);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Dark by default — this is a dark-only app */
+  --background: oklch(0.16 0.02 270);
+  --foreground: oklch(0.96 0.01 250);
+  --card: oklch(0.20 0.02 270);
+  --card-foreground: oklch(0.96 0.01 250);
+  --popover: oklch(0.20 0.02 270);
+  --popover-foreground: oklch(0.96 0.01 250);
+
+  --primary: oklch(0.62 0.18 280);
+  --primary-foreground: oklch(0.98 0.01 250);
+  --secondary: oklch(0.28 0.04 270);
+  --secondary-foreground: oklch(0.96 0.01 250);
+  --muted: oklch(0.25 0.02 270);
+  --muted-foreground: oklch(0.70 0.02 260);
+  --accent: oklch(0.28 0.04 270);
+  --accent-foreground: oklch(0.96 0.01 250);
+  --destructive: oklch(0.65 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 250);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.62 0.18 280);
+
+  /* Material-3-ish tokens used by the dashboard reference */
+  --primary-fixed-dim: oklch(0.78 0.15 280);
+  --primary-container: oklch(0.45 0.20 285);
+  --secondary-fixed: oklch(0.82 0.16 60);
+  --secondary-container: oklch(0.50 0.18 55);
+  --tertiary: oklch(0.65 0.18 180);
+  --tertiary-fixed-dim: oklch(0.82 0.14 180);
+  --tertiary-container: oklch(0.45 0.18 180);
+  --on-surface: oklch(0.96 0.01 250);
+  --on-surface-variant: oklch(0.78 0.02 260);
+  --outline-variant: oklch(0.55 0.02 260);
+  --error: oklch(0.70 0.22 25);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  body {
+    background-image:
+      radial-gradient(ellipse at top left, oklch(0.62 0.18 280 / 0.18), transparent 50%),
+      radial-gradient(ellipse at bottom right, oklch(0.82 0.16 60 / 0.12), transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility glass-card {
+  background-color: oklch(1 0 0 / 5%);
+  border: 1px solid oklch(1 0 0 / 10%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 200ms ease, background-color 200ms ease;
+}
+
+@utility heatmap-cell {
+  border-radius: 3px;
+  aspect-ratio: 1 / 1;
+  min-width: 10px;
+}
